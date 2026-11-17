@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="swivel.lol · discord bio">
+<title>swivel.lol · discord bio</title>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 127.14 96.36'%3E%3Cpath fill='%23ffffff' d='M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --bg:#070707;
+  --panel:#101010;
+  --panel-2:#151515;
+  --line:#252525;
+  --text:#f2f2f2;
+  --muted:#8d8d8d;
+  --accent:#fff;
+  --radius:22px;
+}
+
+html{
+  min-height:100%;
+  background:var(--bg);
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  min-height:100dvh;
+  background:
+    radial-gradient(circle at 50% -10%,#191919 0,transparent 38rem),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:
+    max(18px,env(safe-area-inset-top))
+    max(14px,env(safe-area-inset-right))
+    max(18px,env(safe-area-inset-bottom))
+    max(14px,env(safe-area-inset-left));
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.035;
+  background-image:
+    linear-gradient(rgba(255,255,255,.8) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.8) 1px,transparent 1px);
+  background-size:4px 4px;
+  z-index:-1;
+}
+
+button,a{
+  -webkit-tap-highlight-color:transparent;
+}
+
+button:focus-visible,
+a:focus-visible{
+  outline:2px solid #fff;
+  outline-offset:3px;
+}
+
+button{
+  font:inherit;
+}
+
+.hidden{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+#loaderScreen,
+#startScreen{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100vh;
+  height:100dvh;
+  z-index:9999;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:24px;
+  background:#070707;
+}
+
+#loaderScreen{
+  gap:22px;
+  transition:opacity .4s ease,visibility .4s ease;
+}
+
+.loader-orb{
+  width:96px;
+  height:96px;
+  position:relative;
+  display:grid;
+  place-items:center;
+}
+
+.loader-orb .ring{
+  position:absolute;
+  inset:0;
+  border:2px solid transparent;
+  border-top-color:#fff;
+  border-right-color:#777;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+.loader-orb .ring:nth-child(2){
+  inset:12px;
+  animation-duration:1.5s;
+  animation-direction:reverse;
+}
+
+.loader-orb .ring:nth-child(3){
+  inset:24px;
+  animation-duration:2s;
+}
+
+.loader-orb i{
+  font-size:30px;
+  color:#fff;
+  animation:pulse 1.5s ease-in-out infinite;
+}
+
+.loader-text{
+  color:#aaa;
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.loader-bar{
+  width:min(260px,75vw);
+  height:4px;
+  background:#222;
+  overflow:hidden;
+  border-radius:99px;
+}
+
+.loader-bar-fill{
+  height:100%;
+  width:0;
+  background:#fff;
+  transition:width .15s linear;
+}
+
+#startScreen{
+  z-index:9998;
+  gap:22px;
+  cursor:pointer;
+  user-select:none;
+  transition:opacity .45s ease,visibility .45s ease;
+}
+
+.start-title{
+  font-size:clamp(1.25rem,5vw,2rem);
+  font-weight:800;
+  letter-spacing:-.03em;
+}
+
+.start-title i{
+  margin-right:8px;
+}
+
+.click-continue{
+  color:#999;
+  font-size:clamp(1rem,4vw,1.25rem);
+  font-weight:700;
+  animation:blink 1.6s ease-in-out infinite;
+}
+
+#bioRoot{
+  width:100%;
+  max-width:860px;
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .55s ease,transform .55s ease;
+}
+
+#bioRoot.revealed{
+  opacity:1;
+  transform:none;
+}
+
+.bio-card{
+  width:100%;
+  overflow:hidden;
+  background:rgba(13,13,13,.96);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:0 25px 80px rgba(0,0,0,.55);
+}
+
+.tab-bar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  gap:6px;
+  padding:7px;
+  background:rgba(10,10,10,.92);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.tab-btn{
+  flex:1;
+  min-height:48px;
+  border:0;
+  border-radius:14px;
+  background:transparent;
+  color:#777;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  font-size:.92rem;
+  font-weight:800;
+  text-transform:lowercase;
+  transition:background .15s,color .15s;
+}
+
+.tab-btn:hover{
+  background:#171717;
+  color:#ddd;
+}
+
+.tab-btn.active{
+  background:#fff;
+  color:#050505;
+}
+
+.tab-panel{
+  display:none;
+}
+
+.tab-panel.active{
+  display:block;
+}
+
+.banner-container{
+  width:100%;
+  height:clamp(150px,28vw,250px);
+  overflow:hidden;
+  background:#161616;
+  position:relative;
+}
+
+.banner-container img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+.banner-container::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,transparent 45%,rgba(7,7,7,.75) 100%);
+  pointer-events:none;
+}
+
+.avatar-wrapper{
+  display:flex;
+  justify-content:center;
+  margin-top:clamp(-82px,-9vw,-58px);
+  position:relative;
+  z-index:3;
+  padding:0 16px;
+}
+
+.avatar{
+  width:clamp(104px,18vw,160px);
+  height:clamp(104px,18vw,160px);
+  border-radius:50%;
+  background:#181818 center/cover no-repeat;
+  border:5px solid #0d0d0d;
+  box-shadow:0 8px 30px rgba(0,0,0,.65);
+}
+
+.profile-header{
+  text-align:center;
+  padding:14px 20px 0;
+}
+
+h1{
+  color:#fff;
+  font-size:clamp(1.7rem,5vw,2.5rem);
+  line-height:1.1;
+  overflow-wrap:anywhere;
+}
+
+.discord-tag{
+  display:inline-flex;
+  align-items:center;
+  max-width:100%;
+  margin-top:9px;
+  padding:6px 11px;
+  color:#888;
+  background:#151515;
+  border:1px solid #252525;
+  border-radius:999px;
+  font-size:.9rem;
+  overflow-wrap:anywhere;
+}
+
+.friend-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:44px;
+  margin-top:14px;
+  padding:10px 16px;
+  border:1px solid #333;
+  border-radius:12px;
+  background:#fff;
+  color:#050505;
+  text-decoration:none;
+  font-weight:800;
+  font-size:.9rem;
+  transition:transform .15s,background .15s;
+}
+
+.friend-btn:hover{
+  transform:translateY(-1px);
+  background:#eaeaea;
+}
+
+.friend-btn:active{
+  transform:translateY(0);
+}
+
+.section{
+  margin:30px clamp(16px,5vw,42px) 0;
+}
+
+.section:last-child{
+  margin-bottom:34px;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#ddd;
+  font-size:1rem;
+  font-weight:800;
+  text-transform:lowercase;
+  border-bottom:1px solid #252525;
+  padding-bottom:11px;
+  margin-bottom:15px;
+}
+
+.section-title i{
+  width:18px;
+  text-align:center;
+  color:#fff;
+}
+
+.bio-text{
+  color:#a0a0a0;
+  font-size:clamp(.92rem,2.3vw,1rem);
+  line-height:1.7;
+  overflow-wrap:anywhere;
+}
+
+.bio-text p+p{
+  margin-top:14px;
+}
+
+.song-card{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:16px;
+  background:#111;
+  border:1px solid #252525;
+  border-radius:18px;
+}
+
+.song-art{
+  width:clamp(78px,14vw,110px);
+  aspect-ratio:1;
+  flex:0 0 auto;
+  border-radius:13px;
+  overflow:hidden;
+  background:#1b1b1b;
+}
+
+.song-art img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.song-info{
+  min-width:0;
+  flex:1;
+}
+
+.song-label{
+  color:#777;
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+}
+
+.song-title{
+  color:#fff;
+  font-size:1.15rem;
+  font-weight:850;
+  margin-top:4px;
+  overflow-wrap:anywhere;
+}
+
+.song-artist{
+  color:#8a8a8a;
+  font-size:.9rem;
+  margin-top:3px;
+  overflow-wrap:anywhere;
+}
+
+.audio-player{
+  width:100%;
+  margin-top:10px;
+}
+
+.audio-player audio{
+  display:block;
+  width:100%;
+  height:38px;
+}
+
+.repo-list{
+  display:grid;
+  gap:12px;
+}
+
+.repo-card{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  padding:16px;
+  border:1px solid #252525;
+  border-radius:16px;
+  background:#111;
+  transition:transform .15s,border-color .15s,background .15s;
+}
+
+.repo-card:hover{
+  transform:translateY(-2px);
+  border-color:#444;
+  background:#151515;
+}
+
+.repo-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.repo-name{
+  min-width:0;
+  color:#fff;
+  font-size:1rem;
+  font-weight:800;
+  overflow-wrap:anywhere;
+}
+
+.repo-name i{
+  margin-right:7px;
+}
+
+.repo-badge{
+  flex:0 0 auto;
+  color:#999;
+  border:1px solid #333;
+  border-radius:999px;
+  padding:3px 8px;
+  font-size:.65rem;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.repo-desc{
+  color:#888;
+  margin-top:8px;
+  line-height:1.5;
+  font-size:.9rem;
+  overflow-wrap:anywhere;
+}
+
+.repo-desc.empty{
+  font-style:italic;
+  opacity:.65;
+}
+
+.repo-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:12px;
+  color:#777;
+  font-size:.78rem;
+}
+
+.repo-meta span{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+}
+
+.repo-meta i{
+  color:#aaa;
+}
+
+.lang-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#aaa;
+  display:inline-block;
+}
+
+.repo-loading,
+.repo-error{
+  text-align:center;
+  padding:40px 16px;
+  color:#777;
+  line-height:1.6;
+}
+
+.repo-loading i,
+.repo-error i{
+  display:block;
+  font-size:1.4rem;
+  margin-bottom:8px;
+}
+
+.repo-loading i{
+  animation:spin 1.2s linear infinite;
+}
+
+.repo-error{
+  color:#a66;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.12);opacity:.65}
+}
+
+@keyframes blink{
+  50%{opacity:.45}
+}
+
+@media(max-width:600px){
+  body{
+    padding:
+      max(8px,env(safe-area-inset-top))
+      max(8px,env(safe-area-inset-right))
+      max(8px,env(safe-area-inset-bottom))
+      max(8px,env(safe-area-inset-left));
+  }
+
+  .bio-card{
+    border-radius:17px;
+  }
+
+  .tab-bar{
+    padding:5px;
+  }
+
+  .tab-btn{
+    min-height:46px;
+  }
+
+  .banner-container{
+    height:clamp(140px,43vw,190px);
+  }
+
+  .avatar-wrapper{
+    margin-top:-58px;
+  }
+
+  .avatar{
+    width:112px;
+    height:112px;
+    border-width:4px;
+  }
+
+  .section{
+    margin-left:16px;
+    margin-right:16px;
+  }
+
+  .song-card{
+    gap:13px;
+    padding:13px;
+  }
+
+  .song-art{
+    width:82px;
+  }
+}
+
+@media(max-width:430px){
+  .discord-tag{
+    font-size:.82rem;
+  }
+
+  .friend-btn{
+    width:100%;
+  }
+
+  .song-card{
+    align-items:flex-start;
+  }
+
+  .song-art{
+    width:72px;
+  }
+
+  .song-title{
+    font-size:1.05rem;
+  }
+
+  .song-artist{
+    font-size:.82rem;
+  }
+
+  .tab-btn{
+    font-size:.86rem;
+  }
+
+  .tab-btn i{
+    display:none;
+  }
+}
+
+@media(max-width:350px){
+  body{
+    padding-left:5px;
+    padding-right:5px;
+  }
+
+  .section{
+    margin-left:12px;
+    margin-right:12px;
+  }
+
+  .avatar{
+    width:98px;
+    height:98px;
+  }
+
+  .avatar-wrapper{
+    margin-top:-50px;
+  }
+
+  .song-card{
+    flex-direction:column;
+  }
+
+  .song-art{
+    width:100%;
+    max-width:120px;
+    align-self:center;
+  }
+}
+
+@media(min-width:900px){
+  body{
+    padding-top:40px;
+    padding-bottom:40px;
+  }
+
+  .bio-card{
+    border-radius:24px;
+  }
+
+  .section{
+    margin-top:34px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="loaderScreen" aria-label="loading">
+  <div class="loader-orb">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <i class="fab fa-discord"></i>
+  </div>
+  <div class="loader-text">loading</div>
+  <div class="loader-bar">
+    <div class="loader-bar-fill" id="loaderFill"></div>
+  </div>
+</div>
+
+<div id="startScreen" class="hidden" role="button" tabindex="0" aria-label="Enter website">
+  <div class="start-title">
+    <i class="fas fa-code"></i>
+    website made by swivel
+  </div>
+  <div class="click-continue">
+    click to continue <i class="fas fa-arrow-right"></i>
+  </div>
+</div>
+
+<main id="bioRoot">
+  <div class="bio-card">
+
+    <nav class="tab-bar" aria-label="Profile sections">
+      <button class="tab-btn active" id="tab1" type="button">
+        <i class="fab fa-discord"></i> bio
+      </button>
+      <button class="tab-btn" id="tab2" type="button">
+        <i class="fab fa-github"></i> github
+      </button>
+    </nav>
+
+    <section class="tab-panel active" id="panel1">
+
+      <div class="banner-container">
+        <img id="banner"
+          src="https://cdn.discordapp.com/banners/1402477112828629044/a_4034a6ad5c68c78605e07da734e36574.gif?size=1024"
+          alt="profile banner"
+          loading="eager"
+          decoding="async">
+      </div>
+
+      <div class="avatar-wrapper">
+        <div class="avatar" id="avatar"
+          style="background-image:url('https://cdn.discordapp.com/avatars/1402477112828629044/516fc68757e9aec0ffd77ac016f484f1.png?size=512')">
+        </div>
+      </div>
+
+      <header class="profile-header">
+        <h1 id="displayName">swivel.lol</h1>
+
+        <div class="discord-tag">
+          <i class="fab fa-discord"></i>
+          @<span id="tag">swivel.lol</span>
+        </div>
+
+        <div>
+          <a class="friend-btn"
+             href="https://discord.com/users/1402477112828629044"
+             target="_blank"
+             rel="noopener noreferrer">
+            <i class="fab fa-discord"></i>
+            send friend request
+          </a>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="section-title">
+          <i class="fab fa-discord"></i>
+          about
+        </div>
+
+        <div class="bio-text">
+          <p>hi im william aka swivel i code in python c# js c++ rust n wtv else i keep to myself n do my own thing</p>
+          <p>when im not coding im prolly on call meeting ppl or js wasting time dont expect me around 24/7 i got better shit to do</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <i class="fas fa-music"></i>
+          favorite song
+        </div>
+
+        <div class="song-card">
+          <div class="song-art">
+            <img src="https://files.catbox.moe/420hsm.jpeg"
+                 alt="star67 album art"
+                 loading="lazy">
+          </div>
+
+          <div class="song-info">
+            <div class="song-label">
+              <i class="fas fa-play-circle"></i>
+              now spinning
+            </div>
+
+            <div class="song-title">star67</div>
+
+            <div class="song-artist">
+              <i class="fas fa-microphone-alt"></i>
+              deceased w/ NO ONE
+            </div>
+
+            <div class="audio-player">
+              <audio id="mainAudio" controls preload="metadata" loop>
+                <source src="https://files.catbox.moe/90mjql.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <section class="tab-panel" id="panel2">
+      <section class="section">
+        <div class="section-title">
+          <i class="fab fa-github"></i>
+          github repos
+        </div>
+
+        <div id="repos" class="repo-list">
+          <div class="repo-loading" id="repoLoading">
+            <i class="fas fa-spinner"></i>
+            loading repositories...
+          </div>
+        </div>
+      </section>
+    </section>
+
+  </div>
+</main>
+
+<script>
+(() => {
+  const DISCORD_ID = "1402477112828629044";
+  const GITHUB_USER = "sswivell";
+  const DISCORD_API = `https://japi.rest/discord/v1/user/${DISCORD_ID}`;
+  const REPOS_API = `https://api.github.com/users/${GITHUB_USER}/repos`;
+
+  const loader = document.getElementById("loaderScreen");
+  const fill = document.getElementById("loaderFill");
+  const start = document.getElementById("startScreen");
+  const root = document.getElementById("bioRoot");
+  const audio = document.getElementById("mainAudio");
+
+  let repoLoaded = false;
+
+  function escapeHTML(value){
+    return String(value ?? "")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#39;");
+  }
+
+  function safeHTTPS(url){
+    return url && url.startsWith("https://") ? url : "#";
+  }
+
+  function showStart(){
+    loader.classList.add("hidden");
+    start.classList.remove("hidden");
+  }
+
+  function enterSite(){
+    if (audio){
+      const p = audio.play();
+      if (p?.catch) p.catch(() => {});
+    }
+
+    start.classList.add("hidden");
+    root.classList.add("revealed");
+
+    setTimeout(() => {
+      start.style.display = "none";
+    }, 500);
+  }
+
+  start.addEventListener("click", enterSite);
+  start.addEventListener("keydown", e => {
+    if(e.key === "Enter" || e.key === " "){
+      e.preventDefault();
+      enterSite();
+    }
+  });
+
+  let progress = 0;
+  const progressTimer = setInterval(() => {
+    progress += Math.random() * 18 + 9;
+
+    if(progress >= 100){
+      progress = 100;
+      clearInterval(progressTimer);
+      fill.style.width = "100%";
+      setTimeout(showStart, 220);
+    }else{
+      fill.style.width = `${progress}%`;
+    }
+  }, 100);
+
+  async function fetchWithTimeout(url, ms){
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), ms);
+
+    try{
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: { "Accept":"application/json" }
+      });
+
+      if(!response.ok) throw new Error(`HTTP ${response.status}`);
+      return await response.json();
+    }finally{
+      clearTimeout(timer);
+    }
+  }
+
+  async function loadDiscordProfile(){
+    try{
+      const data = await fetchWithTimeout(DISCORD_API, 4000);
+      const u = data?.data;
+      if(!u) return;
+
+      if(u.avatarURL){
+        document.getElementById("avatar").style.backgroundImage =
+          `url("${u.avatarURL}?size=512")`;
+      }
+
+      if(u.bannerURL){
+        const banner = document.getElementById("banner");
+        banner.src = `${u.bannerURL}?size=1024`;
+      }
+
+      if(u.global_name || u.username){
+        document.getElementById("displayName").textContent =
+          u.global_name || u.username;
+      }
+
+      if(u.tag){
+        document.getElementById("tag").textContent = u.tag;
+      }
+    }catch(_){}
+  }
+
+  function switchTab(number){
+    const isBio = number === 1;
+
+    document.getElementById("tab1").classList.toggle("active", isBio);
+    document.getElementById("tab2").classList.toggle("active", !isBio);
+    document.getElementById("panel1").classList.toggle("active", isBio);
+    document.getElementById("panel2").classList.toggle("active", !isBio);
+
+    if(!isBio && !repoLoaded){
+      repoLoaded = true;
+      loadRepositories();
+    }
+  }
+
+  document.getElementById("tab1").addEventListener("click", () => switchTab(1));
+  document.getElementById("tab2").addEventListener("click", () => switchTab(2));
+
+  async function loadRepositories(){
+    const wrap = document.getElementById("repos");
+
+    try{
+      const repos = await fetchWithTimeout(REPOS_API, 7000);
+
+      if(!Array.isArray(repos) || repos.length === 0){
+        wrap.innerHTML = `
+          <div class="repo-error">
+            <i class="fas fa-folder-open"></i>
+            no public repositories found
+          </div>`;
+        return;
+      }
+
+      repos.sort((a,b) => {
+        const da = new Date(a.pushed_at || a.updated_at || 0);
+        const db = new Date(b.pushed_at || b.updated_at || 0);
+        return db - da;
+      });
+
+      wrap.innerHTML = repos.map(repo => {
+        const desc = repo.description
+          ? `<div class="repo-desc">${escapeHTML(repo.description)}</div>`
+          : `<div class="repo-desc empty">no description</div>`;
+
+        const language = repo.language
+          ? `<span><span class="lang-dot"></span>${escapeHTML(repo.language)}</span>`
+          : "";
+
+        const stars = `
+          <span>
+            <i class="fas fa-star"></i>
+            ${repo.stargazers_count || 0}
+          </span>`;
+
+        const forks = `
+          <span>
+            <i class="fas fa-code-branch"></i>
+            ${repo.forks_count || 0}
+          </span>`;
+
+        const badge = repo.fork
+          ? `<span class="repo-badge">fork</span>`
+          : "";
+
+        const href = escapeHTML(safeHTTPS(repo.html_url));
+
+        return `
+          <a class="repo-card"
+             href="${href}"
+             target="_blank"
+             rel="noopener noreferrer">
+            <div class="repo-head">
+              <div class="repo-name">
+                <i class="fab fa-github"></i>
+                ${escapeHTML(repo.name)}
+              </div>
+              ${badge}
+            </div>
+            ${desc}
+            <div class="repo-meta">
+              ${language}
+              ${stars}
+              ${forks}
+            </div>
+          </a>`;
+      }).join("");
+
+    }catch(error){
+      repoLoaded = false;
+      wrap.innerHTML = `
+        <div class="repo-error">
+          <i class="fas fa-exclamation-triangle"></i>
+          could not load repos right now
+        </div>`;
+    }
+  }
+
+  loadDiscordProfile();
+})();
+</script>
+
+</body>
+</html>
