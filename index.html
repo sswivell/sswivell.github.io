@@ -561,45 +561,38 @@ h1{
 .repo-loading,
 .repo-error{
   text-align:center;
-  padding:40px 16px;
+  padding:30px 16px;
   color:#777;
-  line-height:1.6;
-}
-
-.repo-loading i,
-.repo-error i{
-  display:block;
-  font-size:1.4rem;
-  margin-bottom:8px;
+  border:1px dashed #292929;
+  border-radius:16px;
 }
 
 .repo-loading i{
-  animation:spin 1.2s linear infinite;
+  margin-right:7px;
+  animation:spin 1s linear infinite;
 }
 
 .repo-error{
-  color:#a66;
+  color:#999;
 }
 
 @keyframes spin{
-  to{transform:rotate(360deg)}
+  to{transform:rotate(360deg);}
 }
 
 @keyframes pulse{
-  50%{transform:scale(1.12);opacity:.65}
+  0%,100%{transform:scale(1);opacity:.65;}
+  50%{transform:scale(1.1);opacity:1;}
 }
 
 @keyframes blink{
-  50%{opacity:.45}
+  0%,100%{opacity:.45;}
+  50%{opacity:1;}
 }
 
 @media(max-width:600px){
   body{
-    padding:
-      max(8px,env(safe-area-inset-top))
-      max(8px,env(safe-area-inset-right))
-      max(8px,env(safe-area-inset-bottom))
-      max(8px,env(safe-area-inset-left));
+    padding:10px;
   }
 
   .bio-card{
@@ -611,81 +604,63 @@ h1{
   }
 
   .tab-btn{
-    min-height:46px;
+    min-height:44px;
+    font-size:.84rem;
   }
 
   .banner-container{
-    height:clamp(140px,43vw,190px);
+    height:180px;
+  }
+
+  .avatar{
+    width:112px;
+    height:112px;
   }
 
   .avatar-wrapper{
     margin-top:-58px;
   }
 
-  .avatar{
-    width:112px;
-    height:112px;
-    border-width:4px;
+  .profile-header{
+    padding-left:14px;
+    padding-right:14px;
   }
 
   .section{
-    margin-left:16px;
-    margin-right:16px;
+    margin-left:14px;
+    margin-right:14px;
   }
 
   .song-card{
+    align-items:flex-start;
     gap:13px;
     padding:13px;
   }
 
   .song-art{
-    width:82px;
-  }
-}
-
-@media(max-width:430px){
-  .discord-tag{
-    font-size:.82rem;
-  }
-
-  .friend-btn{
-    width:100%;
-  }
-
-  .song-card{
-    align-items:flex-start;
-  }
-
-  .song-art{
-    width:72px;
+    width:76px;
   }
 
   .song-title{
-    font-size:1.05rem;
+    font-size:1rem;
   }
 
   .song-artist{
     font-size:.82rem;
   }
 
-  .tab-btn{
-    font-size:.86rem;
-  }
-
-  .tab-btn i{
-    display:none;
+  .repo-card{
+    padding:14px;
   }
 }
 
-@media(max-width:350px){
+@media(max-width:390px){
   body{
-    padding-left:5px;
-    padding-right:5px;
+    padding:7px;
   }
 
-  .section{
-    margin-left:12px;
-    margin-right:12px;
+  .banner-container{
+    height:155px;
   }
 
   .avatar{
@@ -697,29 +672,33 @@ h1{
     margin-top:-50px;
   }
 
+  h1{
+    font-size:1.55rem;
+  }
+
+  .friend-btn{
+    width:100%;
+  }
+
   .song-card{
     flex-direction:column;
   }
 
   .song-art{
     width:100%;
-    max-width:120px;
+    max-width:180px;
     align-self:center;
   }
 }
 
-@media(min-width:900px){
+@media(min-width:1000px){
   body{
-    padding-top:40px;
-    padding-bottom:40px;
+    padding-top:35px;
+    padding-bottom:35px;
   }
 
   .bio-card{
-    border-radius:24px;
-  }
-
-  .section{
-    margin-top:34px;
+    border-radius:26px;
   }
 }
 
@@ -745,38 +724,54 @@ h1{
     <div class="ring"></div>
     <i class="fab fa-discord"></i>
   </div>
+
   <div class="loader-text">loading</div>
+
   <div class="loader-bar">
     <div class="loader-bar-fill" id="loaderFill"></div>
   </div>
 </div>
 
-<div id="startScreen" class="hidden" role="button" tabindex="0" aria-label="Enter website">
+<div id="startScreen"
+     class="hidden"
+     role="button"
+     tabindex="0"
+     aria-label="Enter website">
+
   <div class="start-title">
     <i class="fas fa-code"></i>
     website made by swivel
   </div>
+
   <div class="click-continue">
-    click to continue <i class="fas fa-arrow-right"></i>
+    click to continue
+    <i class="fas fa-arrow-right"></i>
   </div>
+
 </div>
 
 <main id="bioRoot">
   <div class="bio-card">
 
     <nav class="tab-bar" aria-label="Profile sections">
+
       <button class="tab-btn active" id="tab1" type="button">
-        <i class="fab fa-discord"></i> bio
+        <i class="fab fa-discord"></i>
+        bio
       </button>
+
       <button class="tab-btn" id="tab2" type="button">
-        <i class="fab fa-github"></i> github
+        <i class="fab fa-github"></i>
+        github
       </button>
+
     </nav>
 
     <section class="tab-panel active" id="panel1">
 
       <div class="banner-container">
-        <img id="banner"
+        <img
+          id="banner"
           src="https://cdn.discordapp.com/banners/1402477112828629044/a_4034a6ad5c68c78605e07da734e36574.gif?size=1024"
           alt="profile banner"
           loading="eager"
@@ -784,12 +779,17 @@ h1{
       </div>
 
       <div class="avatar-wrapper">
-        <div class="avatar" id="avatar"
+
+        <div
+          class="avatar"
+          id="avatar"
           style="background-image:url('https://cdn.discordapp.com/avatars/1402477112828629044/516fc68757e9aec0ffd77ac016f484f1.png?size=512')">
         </div>
+
       </div>
 
       <header class="profile-header">
+
         <h1 id="displayName">swivel.lol</h1>
 
         <div class="discord-tag">
@@ -798,48 +798,71 @@ h1{
         </div>
 
         <div>
-          <a class="friend-btn"
-             href="https://discord.com/users/1402477112828629044"
-             target="_blank"
-             rel="noopener noreferrer">
+
+          <a
+            class="friend-btn"
+            href="https://discord.com/users/1402477112828629044"
+            target="_blank"
+            rel="noopener noreferrer">
+
             <i class="fab fa-discord"></i>
             send friend request
+
           </a>
+
         </div>
+
       </header>
 
       <section class="section">
+
         <div class="section-title">
           <i class="fab fa-discord"></i>
           about
         </div>
 
         <div class="bio-text">
-          <p>hi im william aka swivel i code in python c# js c++ rust n wtv else i keep to myself n do my own thing</p>
-          <p>when im not coding im prolly on call meeting ppl or js wasting time dont expect me around 24/7 i got better shit to do</p>
+
+          <p>
+            hi im william aka swivel i code in python c# js c++ rust n wtv else i keep to myself n do my own thing
+          </p>
+
+          <p>
+            when im not coding im prolly on call meeting ppl or js wasting time dont expect me around 24/7 i got better shit to do
+          </p>
+
         </div>
+
       </section>
 
       <section class="section">
+
         <div class="section-title">
           <i class="fas fa-music"></i>
           favorite song
         </div>
 
         <div class="song-card">
+
           <div class="song-art">
-            <img src="https://files.catbox.moe/420hsm.jpeg"
-                 alt="star67 album art"
-                 loading="lazy">
+
+            <img
+              src="https://files.catbox.moe/420hsm.jpeg"
+              alt="star67 album art"
+              loading="lazy">
+
           </div>
 
           <div class="song-info">
+
             <div class="song-label">
               <i class="fas fa-play-circle"></i>
               now spinning
             </div>
 
-            <div class="song-title">star67</div>
+            <div class="song-title">
+              star67
+            </div>
 
             <div class="song-artist">
               <i class="fas fa-microphone-alt"></i>
@@ -847,31 +870,51 @@ h1{
             </div>
 
             <div class="audio-player">
-              <audio id="mainAudio" controls preload="metadata" loop>
-                <source src="https://files.catbox.moe/90mjql.mp3" type="audio/mpeg">
+
+              <audio
+                id="mainAudio"
+                controls
+                preload="metadata"
+                loop>
+
+                <source
+                  src="https://files.catbox.moe/90mjql.mp3"
+                  type="audio/mpeg">
+
                 Your browser does not support the audio element.
+
               </audio>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
     </section>
 
     <section class="tab-panel" id="panel2">
+
       <section class="section">
+
         <div class="section-title">
           <i class="fab fa-github"></i>
           github repos
         </div>
 
         <div id="repos" class="repo-list">
+
           <div class="repo-loading" id="repoLoading">
             <i class="fas fa-spinner"></i>
             loading repositories...
           </div>
+
         </div>
+
       </section>
+
     </section>
 
   </div>
@@ -879,3005 +922,234 @@ h1{
 
 <script>
 (() => {
+
   const DISCORD_ID = "1402477112828629044";
   const GITHUB_USER = "sswivell";
-  const DISCORD_API = `https://japi.rest/discord/v1/user/${DISCORD_ID}`;
-  const REPOS_API = `https://api.github.com/users/${GITHUB_USER}/repos`;
 
-  const loader = document.getElementById("loaderScreen");
-  const fill = document.getElementById("loaderFill");
-  const start = document.getElementById("startScreen");
-  const root = document.getElementById("bioRoot");
-  const audio = document.getElementById("mainAudio");
+  const DISCORD_API =
+    `https://japi.rest/discord/v1/user/${DISCORD_ID}`;
+
+  const REPOS_API =
+    `https://api.github.com/users/${GITHUB_USER}/repos`;
+
+  const loader =
+    document.getElementById("loaderScreen");
+
+  const fill =
+    document.getElementById("loaderFill");
+
+  const start =
+    document.getElementById("startScreen");
+
+  const root =
+    document.getElementById("bioRoot");
+
+  const audio =
+    document.getElementById("mainAudio");
 
   let repoLoaded = false;
 
   function escapeHTML(value){
+
     return String(value ?? "")
       .replaceAll("&","&amp;")
       .replaceAll("<","&lt;")
       .replaceAll(">","&gt;")
       .replaceAll('"',"&quot;")
       .replaceAll("'","&#39;");
+
   }
 
   function safeHTTPS(url){
-    return url && url.startsWith("https://") ? url : "#";
+
+    return url && url.startsWith("https://")
+      ? url
+      : "#";
+
   }
 
   function showStart(){
+
     loader.classList.add("hidden");
     start.classList.remove("hidden");
+
   }
 
   function enterSite(){
-    if (audio){
+
+    if(audio){
+
       const p = audio.play();
-      if (p?.catch) p.catch(() => {});
+
+      if(p?.catch){
+        p.catch(() => {});
+      }
+
     }
 
     start.classList.add("hidden");
     root.classList.add("revealed");
 
     setTimeout(() => {
+
       start.style.display = "none";
-    }, 500);
+
+    },500);
+
   }
 
-  start.addEventListener("click", enterSite);
-  start.addEventListener("keydown", e => {
-    if(e.key === "Enter" || e.key === " "){
-      e.preventDefault();
-      enterSite();
+  start.addEventListener(
+    "click",
+    enterSite
+  );
+
+  start.addEventListener(
+    "keydown",
+    e => {
+
+      if(e.key === "Enter" || e.key === " "){
+
+        e.preventDefault();
+        enterSite();
+
+      }
+
     }
-  });
+  );
 
   let progress = 0;
+
   const progressTimer = setInterval(() => {
+
     progress += Math.random() * 18 + 9;
 
     if(progress >= 100){
-      progress = 100;
-      clearInterval(progressTimer);
-      fill.style.width = "100%";
-      setTimeout(showStart, 220);
-    }else{
-      fill.style.width = `${progress}%`;
-    }
-  }, 100);
 
-  async function fetchWithTimeout(url, ms){
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), ms);
+      progress = 100;
+
+      clearInterval(progressTimer);
+
+      fill.style.width = "100%";
+
+      setTimeout(showStart,220);
+
+    }else{
+
+      fill.style.width = `${progress}%`;
+
+    }
+
+  },100);
+
+  async function fetchWithTimeout(url,ms){
+
+    const controller =
+      new AbortController();
+
+    const timer =
+      setTimeout(() => controller.abort(),ms);
 
     try{
-      const response = await fetch(url, {
-        signal: controller.signal,
-        headers: { "Accept":"application/json" }
-      });
 
-      if(!response.ok) throw new Error(`HTTP ${response.status}`);
+      const response =
+        await fetch(url,{
+          signal:controller.signal,
+          headers:{
+            "Accept":"application/json"
+          }
+        });
+
+      if(!response.ok){
+        throw new Error(`HTTP ${response.status}`);
+      }
+
       return await response.json();
+
     }finally{
+
       clearTimeout(timer);
+
     }
+
   }
 
   async function loadDiscordProfile(){
+
     try{
-      const data = await fetchWithTimeout(DISCORD_API, 4000);
+
+      const data =
+        await fetchWithTimeout(
+          DISCORD_API,
+          4000
+        );
+
       const u = data?.data;
-      if(!u) return;
+
+      if(!u){
+        return;
+      }
 
       if(u.avatarURL){
-        document.getElementById("avatar").style.backgroundImage =
+
+        document.getElementById("avatar")
+          .style.backgroundImage =
           `url("${u.avatarURL}?size=512")`;
+
       }
 
       if(u.bannerURL){
-        const banner = document.getElementById("banner");
-        banner.src = `${u.bannerURL}?size=1024`;
+
+        const banner =
+          document.getElementById("banner");
+
+        banner.src =
+          `${u.bannerURL}?size=1024`;
+
       }
 
       if(u.global_name || u.username){
-        document.getElementById("displayName").textContent =
+
+        document.getElementById("displayName")
+          .textContent =
           u.global_name || u.username;
+
       }
 
       if(u.tag){
-        document.getElementById("tag").textContent = u.tag;
+
+        document.getElementById("tag")
+          .textContent = u.tag;
+
       }
+
     }catch(_){}
+
   }
 
   function switchTab(number){
+
     const isBio = number === 1;
 
-    document.getElementById("tab1").classList.toggle("active", isBio);
-    document.getElementById("tab2").classList.toggle("active", !isBio);
-    document.getElementById("panel1").classList.toggle("active", isBio);
-    document.getElementById("panel2").classList.toggle("active", !isBio);
+    document.getElementById("tab1")
+      .classList.toggle("active",isBio);
+
+    document.getElementById("tab2")
+      .classList.toggle("active",!isBio);
+
+    document.getElementById("panel1")
+      .classList.toggle("active",isBio);
+
+    document.getElementById("panel2")
+      .classList.toggle("active",!isBio);
 
     if(!isBio && !repoLoaded){
+
       repoLoaded = true;
+
       loadRepositories();
+
     }
+
   }
 
-  document.getElementById("tab1").addEventListener("click", () => switchTab(1));
-  document.getElementById("tab2").addEventListener("click", () => switchTab(2));
-
-  async function loadRepositories(){
-    const wrap = document.getElementById("repos");
-
-    try{
-      const repos = await fetchWithTimeout(REPOS_API, 7000);
-
-      if(!Array.isArray(repos) || repos.length === 0){
- rd{
-gap:13px
-}
-
-.song-art{
-width:80px;
-height:80px;
-flex-basis:80px
-}
-
-}
-
-@media(max-width:450px){
-
-.banner-container{
-height:145px
-}
-
-.avatar{
-width:100px;
-height:100px
-}
-
-.avatar-wrapper{
-margin-top:-50px
-}
-
-.song-card{
-flex-direction:column;
-align-items:stretch
-}
-
-.song-art{
-width:100%;
-height:150px
-}
-
-.song-info{
-width:100%
-}
-
-}
-
-@media(prefers-reduced-motion:reduce){
-
-*{
-animation-duration:.01ms!important;
-transition-duration:.01ms!important
-}
-
-}
-</style>
-</head>
-
-<body>
-
-<div id="loaderScreen">
-<div class="loader-orb">
-<div class="loader-ring"></div>
-<div class="loader-ring"></div>
-<div class="loader-ring"></div>
-<i class="fab fa-discord"></i>
-</div>
-
-<div class="loader-text">loading</div>
-
-<div class="loader-bar">
-<div class="loader-fill" id="loaderFill"></div>
-</div>
-</div>
-
-<div id="startScreen" class="hidden">
-<div class="start-title">
-<i class="fas fa-terminal"></i>
-website made by swivel
-</div>
-
-<div class="click-continue">
-click to continue
-<i class="fas fa-arrow-right"></i>
-</div>
-</div>
-
-<main id="bioRoot">
-
-<div class="bio-card">
-
-<div class="tab-bar">
-<button class="tab-btn active" id="tab1" type="button">
-<i class="fab fa-discord"></i>
-bio
-</button>
-
-<button class="tab-btn" id="tab2" type="button">
-<i class="fab fa-github"></i>
-github
-</button>
-</div>
-
-<section class="tab-panel active" id="panel1">
-
-<div class="banner-container">
-<img
-id="banner"
-src="https://cdn.discordapp.com/banners/1402477112828629044/a_4034a6ad5c68c78605e07da734e36574.gif?size=1024"
-alt="profile banner"
->
-</div>
-
-<div class="avatar-wrapper">
-<div
-class="avatar"
-id="avatar"
-style="background-image:url('https://cdn.discordapp.com/avatars/1402477112828629044/516fc68757e9aec0ffd77ac016f484f1.png?size=512')"
-></div>
-</div>
-
-<div class="profile-header">
-
-<h1 id="displayName">
-swivel.lol
-</h1>
-
-<div class="discord-tag">
-<i class="fab fa-discord"></i>
-@<span id="tag">swivel.lol</span>
-</div>
-
-<div>
-<a
-class="friend-btn"
-href="https://discord.com/users/1402477112828629044"
-target="_blank"
-rel="noopener noreferrer"
->
-<i class="fab fa-discord"></i>
-send friend request
-</a>
-</div>
-
-</div>
-
-<div class="section">
-
-<div class="section-title">
-<i class="fas fa-user"></i>
-about
-</div>
-
-<div class="bio-text">
-
-<p>
-hi. I'm William, aka swivel. I code in Python, C#, JavaScript, C++, Rust, and whatever else I feel like messing with. I keep to myself most of the time.
-</p>
-
-<p>
-When I'm not coding, I'm probably on a call, meeting people, or wasting time on TikTok. Don't expect me to be around 24/7. I have better shit to do.
-</p>
-
-</div>
-
-</div>
-
-<div class="section">
-
-<div class="section-title">
-<i class="fas fa-music"></i>
-favorite song
-</div>
-
-<div class="song-card">
-
-<div class="song-art">
-<img
-src="https://files.catbox.moe/420hsm.jpeg"
-alt="star67 album art"
->
-</div>
-
-<div class="song-info">
-
-<div class="song-label">
-<i class="fas fa-play-circle"></i>
-now spinning
-</div>
-
-<div class="song-title">
-star67
-</div>
-
-<div class="song-artist">
-deceased w/ NO ONE
-</div>
-
-<div class="audio-player">
-<audio id="mainAudio" controls preload="none" loop>
-<source
-src="https://files.catbox.moe/90mjql.mp3"
-type="audio/mpeg"
->
-</audio>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tab-panel" id="panel2">
-
-<div class="section">
-
-<div class="section-title">
-<i class="fab fa-github"></i>
-github repos
-</div>
-
-<div id="repos" class="repo-list">
-
-<div class="repo-loading">
-<i class="fas fa-spinner"></i>
-loading repositories
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-</main>
-
-<script>
-(function(){
-
-"use strict";
-
-var DISCORD_ID="1402477112828629044";
-var GITHUB_USER="sswivell";
-
-var loaderScreen=document.getElementById("loaderScreen");
-var loaderFill=document.getElementById("loaderFill");
-var startScreen=document.getElementById("startScreen");
-var bioRoot=document.getElementById("bioRoot");
-var mainAudio=document.getElementById("mainAudio");
-
-var loaderProgress=0;
-var loaderDone=false;
-
-function finishLoader(){
-
-if(loaderDone)return;
-
-loaderDone=true;
-loaderProgress=100;
-loaderFill.style.width="100%";
-
-setTimeout(function(){
-
-loaderScreen.classList.add("hidden");
-startScreen.classList.remove("hidden");
-
-},180);
-
-}
-
-var loaderTimer=setInterval(function(){
-
-loaderProgress+=Math.floor(Math.random()*18)+12;
-
-if(loaderProgress>=100){
-
-loaderProgress=100;
-clearInterval(loaderTimer);
-finishLoader();
-
-}
-
-loaderFill.style.width=loaderProgress+"%";
-
-},100);
-
-setTimeout(function(){
-
-if(!loaderDone){
-
-clearInterval(loaderTimer);
-finishLoader();
-
-}
-
-},2500);
-
-startScreen.addEventListener("click",function(){
-
-startScreen.classList.add("hidden");
-
-setTimeout(function(){
-
-startScreen.style.display="none";
-bioRoot.classList.add("revealed");
-
-},300);
-
-if(mainAudio){
-
-var play=mainAudio.play();
-
-if(play&&typeof play.catch==="function"){
-play.catch(function(){});
-}
-
-}
-
-});
-
-function escapeHTML(value){
-
-return String(value==null?"":value)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#39;");
-
-}
-
-function validHTTPS(url){
-
-if(typeof url!=="string")return false;
-
-try{
-
-var parsed=new URL(url);
-
-return parsed.protocol==="https:";
-
-}catch(e){
-
-return false;
-
-}
-
-}
-
-function appendSize(url,size){
-
-if(!url)return "";
-
-if(url.indexOf("?")!==-1){
-
-return url+"&size="+size;
-
-}
-
-return url+"?size="+size;
-
-}
-
-function setImageWithFallback(img,url,fallback){
-
-if(!img)return;
-
-if(!validHTTPS(url)){
-
-img.src=fallback;
-return;
-
-}
-
-img.onerror=function(){
-
-if(img.src!==fallback){
-img.src=fallback;
-}
-
-};
-
-img.src=url;
-
-}
-
-function updateDiscordProfile(data){
-
-var user=data&&data.data;
-
-if(!user)return;
-
-var avatar=document.getElementById("avatar");
-var banner=document.getElementById("banner");
-var displayName=document.getElementById("displayName");
-var tag=document.getElementById("tag");
-
-if(user.avatarURL&&avatar){
-
-var avatarURL=appendSize(user.avatarURL,512);
-
-if(validHTTPS(avatarURL)){
-
-avatar.style.backgroundImage=
-"url(\""+avatarURL.replace(/"/g,"%22")+"\")";
-
-}
-
-}
-
-if(user.bannerURL&&banner){
-
-setImageWithFallback(
-banner,
-appendSize(user.bannerURL,1024),
-"https://cdn.discordapp.com/banners/1402477112828629044/a_4034a6ad5c68c78605e07da734e36574.gif?size=1024"
-);
-
-}
-
-if(displayName){
-
-displayName.textContent=
-user.global_name||
-user.username||
-displayName.textContent;
-
-}
-
-if(tag&&user.tag){
-
-tag.textContent=user.tag;
-
-}
-
-}
-
-function loadDiscordProfile(){
-
-var controller=new AbortController();
-
-var timeout=setTimeout(function(){
-
-controller.abort();
-
-},3500);
-
-fetch(
-"https://japi.rest/discord/v1/user/"+DISCORD_ID,
-{
-method:"GET",
-signal:controller.signal,
-headers:{
-"Accept":"application/json"
-}
-}
-)
-.then(function(response){
-
-if(!response.ok){
-
-throw new Error("Discord API HTTP "+response.status);
-
-}
-
-return response.json();
-
-})
-.then(function(data){
-
-updateDiscordProfile(data);
-
-})
-.catch(function(){
-
-})
-.finally(function(){
-
-clearTimeout(timeout);
-
-});
-
-}
-
-function switchTab(number){
-
-var tab1=document.getElementById("tab1");
-var tab2=document.getElementById("tab2");
-var panel1=document.getElementById("panel1");
-var panel2=document.getElementById("panel2");
-
-var first=number===1;
-
-tab1.classList.toggle("active",first);
-tab2.classList.toggle("active",!first);
-
-panel1.classList.toggle("active",first);
-panel2.classList.toggle("active",!first);
-
-if(!first){
-
-loadRepositories();
-
-}
-
-}
-
-document.getElementById("tab1").addEventListener("click",function(){
-switchTab(1);
-});
-
-document.getElementById("tab2").addEventListener("click",function(){
-switchTab(2);
-});
-
-var reposLoaded=false;
-var reposLoading=false;
-
-function loadRepositories(){
-
-if(reposLoaded||reposLoading)return;
-
-reposLoading=true;
-
-var container=document.getElementById("repos");
-
-container.innerHTML=
-'<div class="repo-loading">'+
-'<i class="fas fa-spinner"></i>'+
-'loading repositories'+
-'</div>';
-
-var controller=new AbortController();
-
-var timeout=setTimeout(function(){
-
-controller.abort();
-
-},6000);
-
-fetch(
-"https://api.github.com/users/"+encodeURIComponent(GITHUB_USER)+"/repos?sort=updated&direction=desc&per_page=100",
-{
-method:"GET",
-signal:controller.signal,
-headers:{
-"Accept":"application/vnd.github+json"
-}
-}
-)
-.then(function(response){
-
-if(!response.ok){
-
-throw new Error("GitHub API HTTP "+response.status);
-
-}
-
-return response.json();
-
-})
-.then(function(repos){
-
-reposLoading=false;
-reposLoaded=true;
-
-if(!Array.isArray(repos)||repos.length===0){
-
-container.innerHTML=
-'<div class="repo-error">'+
-'<i class="fas fa-folder-open"></i>'+
-'no public repositories found'+
-'</div>';
-
-return;
-
-}
-
-repos.sort(function(a,b){
-
-var da=new Date(a.pushed_at||a.updated_at||0).getTime();
-var db=new Date(b.pushed_at||b.updated_at||0).getTime();
-
-return db-da;
-
-});
-
-container.innerHTML=repos.map(function(repo){
-
-var description=repo.description
-?
-'<div class="repo-desc">'+
-escapeHTML(repo.description)+
-'</div>'
-:
-'<div class="repo-desc empty">no description</div>';
-
-var language=repo.language
-?
-'<span>'+
-'<span class="lang-dot"></span>'+
-escapeHTML(repo.language)+
-'</span>'
-:
-"";
-
-var stars=
-'<span>'+
-'<i class="fas fa-star"></i>'+
-String(repo.stargazers_count||0)+
-'</span>';
-
-var forks=
-'<span>'+
-'<i class="fas fa-code-branch"></i>'+
-String(repo.forks_count||0)+
-'</span>';
-
-var forkBadge=repo.fork
-?
-'<span class="repo-badge">fork</span>'
-:
-"";
-
-var href=validHTTPS(repo.html_url)
-?
-repo.html_url
-:
-"#";
-
-return(
-'<a class="repo-card" href="'+
-escapeHTML(href)+
-'" target="_blank" rel="noopener noreferrer">'+
-
-'<div class="repo-head">'+
-
-'<div class="repo-name">'+
-'<i class="fab fa-github"></i>'+
-escapeHTML(repo.name)+
-'</div>'+
-
-forkBadge+
-
-'</div>'+
-
-description+
-
-'<div class="repo-meta">'+
-
-language+
-
-stars+
-
-forks+
-
-'</div>'+
-
-'</a>'
-);
-
-}).join("");
-
-})
-.catch(function(error){
-
-reposLoading=false;
-
-container.innerHTML=
-'<div class="repo-error">'+
-'<i class="fas fa-triangle-exclamation"></i>'+
-'github could not be loaded'+
-'</div>';
-
-})
-.finally(function(){
-
-clearTimeout(timeout);
-
-});
-
-}
-
-loadDiscordProfile();
-
-})();
-</script>
-
-</body>
-</html>rd{
-padding:.8rem
-}
-
-.song-art{
-width:80px;
-height:80px
-}
-
-.song-title{
-font-size:1rem
-}
-
-.tab-btn{
-font-size:.55rem;
-height:44px
-}
-
-}
-
-@media(max-width:450px){
-
-.banner-container{
-height:145px
-}
-
-.avatar{
-width:90px;
-height:90px
-}
-
-.avatar-wrapper{
-margin-top:-48px
-}
-
-h1{
-font-size:1.5rem
-}
-
-.song-card{
-flex-direction:column;
-align-items:stretch
-}
-
-.song-art{
-width:100%;
-height:180px
-}
-
-.section{
-margin-left:.8rem;
-margin-right:.8rem
-}
-
-}
-
-@media(prefers-reduced-motion:reduce){
-
-*{
-animation-duration:.01ms!important;
-animation-iteration-count:1!important;
-transition-duration:.01ms!important
-}
-
-}
-</style>
-</head>
-
-<body>
-
-<div id="loaderScreen">
-
-<div class="loader-orb">
-<div class="ring"></div>
-<div class="ring"></div>
-<div class="ring"></div>
-<i class="fab fa-discord"></i>
-</div>
-
-<div class="loader-text">
-<span>loading</span>
-
-<span class="dots">
-<span></span>
-<span></span>
-<span></span>
-</span>
-
-</div>
-
-<div class="loader-bar">
-<div class="loader-bar-fill" id="loaderFill"></div>
-</div>
-
-</div>
-
-<div id="startScreen" class="hidden">
-
-<div class="start-title">
-<i class="fas fa-terminal"></i>
-website made by swivel
-</div>
-
-<div class="click-continue">
-click to continue
-<i class="fas fa-arrow-right"></i>
-</div>
-
-</div>
-
-<div id="bioRoot">
-
-<div class="bio-card">
-
-<div class="tab-bar">
-
-<button
-class="tab-btn active"
-id="tab1"
-type="button"
-onclick="_4(1)"
->
-<i class="fab fa-discord"></i>
-bio
-</button>
-
-<button
-class="tab-btn"
-id="tab2"
-type="button"
-onclick="_4(2)"
->
-<i class="fab fa-github"></i>
-github
-</button>
-
-</div>
-
-<div class="tab-panel active" id="panel1">
-
-<div class="banner-container">
-
-<img
-id="banner"
-src="https://cdn.discordapp.com/banners/1402477112828629044/a_4034a6ad5c68c78605e07da734e36574.gif?size=1024"
-alt="profile banner"
-loading="eager"
-decoding="async"
->
-
-</div>
-
-<div class="avatar-wrapper">
-
-<div
-class="avatar"
-id="avatar"
-style="background-image:url('https://cdn.discordapp.com/avatars/1402477112828629044/516fc68757e9aec0ffd77ac016f484f1.png?size=512')"
-></div>
-
-</div>
-
-<div class="profile-header">
-
-<h1>
-<span id="displayName">swivel.lol</span>
-</h1>
-
-<div class="discord-tag">
-
-<i class="fab fa-discord"></i>
-
-@<span id="tag">swivel.lol</span>
-
-</div>
-
-<a
-class="friend-btn"
-href="https://discord.com/users/1402477112828629044"
-target="_blank"
-rel="noopener noreferrer"
->
-
-<i class="fab fa-discord"></i>
-
-send friend request
-
-</a>
-
-</div>
-
-<div class="section">
-
-<div class="section-title">
-<i class="fab fa-discord"></i>
-about
-</div>
-
-<div class="bio-text">
-
-<p>
-hi im william aka swivel i code in python c# js c++ rust n wtv else i keep to myself n do my own thing
-</p>
-
-<p>
-when im not coding im prolly on call meeting ppl or js wasting time dont expect me around 24/7 i got better shit to do
-</p>
-
-</div>
-
-</div>
-
-<div class="section">
-
-<div class="section-title">
-<i class="fas fa-music"></i>
-favorite song
-</div>
-
-<div class="song-card">
-
-<div class="song-art">
-
-<img
-src="https://files.catbox.moe/420hsm.jpeg"
-alt="star67 album art"
-loading="lazy"
->
-
-</div>
-
-<div class="song-info">
-
-<div class="song-label">
-<i class="fas fa-play-circle"></i>
-now spinning
-</div>
-
-<div class="song-title">
-star67
-</div>
-
-<div class="song-artist">
-<i class="fas fa-microphone-alt"></i>
-deceased w/ NO ONE
-</div>
-
-<div class="audio-player">
-
-<audio
-id="mainAudio"
-controls
-preload="auto"
-loop
->
-
-<source
-src="https://files.catbox.moe/90mjql.mp3"
-type="audio/mpeg"
->
-
-Your browser does not support the audio element.
-
-</audio>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="tab-panel" id="panel2">
-
-<div class="section">
-
-<div class="section-title">
-<i class="fab fa-github"></i>
-github repos
-</div>
-
-<div id="repos" class="repo-list">
-
-<div class="repo-loading">
-<i class="fas fa-spinner"></i>
-loading repositories…
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-(function(){
-
-const loaderScreen=document.getElementById("loaderScreen");
-const loaderFill=document.getElementById("loaderFill");
-const startScreen=document.getElementById("startScreen");
-const bioRoot=document.getElementById("bioRoot");
-const mainAudio=document.getElementById("mainAudio");
-
-let progress=0;
-
-const loaderTimer=setInterval(function(){
-
-progress+=10;
-
-if(progress>=100){
-
-progress=100;
-
-loaderFill.style.width=progress+"%";
-
-clearInterval(loaderTimer);
-
-setTimeout(function(){
-
-loaderScreen.classList.add("hidden");
-startScreen.classList.remove("hidden");
-
-},250);
-
-return;
-
-}
-
-loaderFill.style.width=progress+"%";
-
-},100);
-
-startScreen.addEventListener("click",function(){
-
-if(mainAudio){
-
-const audioPromise=mainAudio.play();
-
-if(audioPromise&&audioPromise.catch){
-audioPromise.catch(function(){});
-}
-
-}
-
-startScreen.classList.add("hidden");
-
-setTimeout(function(){
-bioRoot.classList.add("revealed");
-},100);
-
-setTimeout(function(){
-startScreen.style.display="none";
-},600);
-
-});
-
-const API_URL=
-"https://japi.rest/discord/v1/user/1402477112828629044";
-
-const REPOS_URL=
-"https://api.github.com/users/sswivell/repos";
-
-let reposLoaded=false;
-
-function escapeHTML(value){
-
-return String(value)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#39;");
-
-}
-
-function safeURL(url){
-
-if(typeof url!=="string"){
-return "#";
-}
-
-if(!/^https:\/\//i.test(url)){
-return "#";
-}
-
-return url;
-
-}
-
-function updateDiscordProfile(data){
-
-const user=data&&data.data;
-
-if(!user){
-return;
-}
-
-const avatar=document.getElementById("avatar");
-const banner=document.getElementById("banner");
-const displayName=document.getElementById("displayName");
-const tag=document.getElementById("tag");
-
-if(user.avatarURL&&avatar){
-
-avatar.style.backgroundImage=
-"url('"+user.avatarURL+"?size=512')";
-
-}
-
-if(user.bannerURL&&banner){
-
-banner.src=user.bannerURL+"?size=1024";
-
-}
-
-if(displayName){
-
-displayName.textContent=
-user.global_name||
-user.username||
-"swivel.lol";
-
-}
-
-if(tag&&user.tag){
-
-tag.textContent=user.tag;
-
-}
-
-}
-
-fetch(API_URL)
-
-.then(function(response){
-
-if(!response.ok){
-throw new Error("discord api error");
-}
-
-return response.json();
-
-})
-
-.then(function(data){
-
-updateDiscordProfile(data);
-
-})
-
-.catch(function(){});
-
-window._4=function(number){
-
-const tab1=document.getElementById("tab1");
-const tab2=document.getElementById("tab2");
-const panel1=document.getElementById("panel1");
-const panel2=document.getElementById("panel2");
-
-if(!tab1||!tab2||!panel1||!panel2){
-return;
-}
-
-tab1.classList.toggle(
-"active",
-number===1
-);
-
-tab2.classList.toggle(
-"active",
-number===2
-);
-
-panel1.classList.toggle(
-"active",
-number===1
-);
-
-panel2.classList.toggle(
-"active",
-number===2
-);
-
-if(number===2&&!reposLoaded){
-
-reposLoaded=true;
-
-loadRepositories();
-
-}
-
-};
-
-function loadRepositories(){
-
-const container=document.getElementById("repos");
-
-if(!container){
-return;
-}
-
-fetch(REPOS_URL)
-
-.then(function(response){
-
-if(!response.ok){
-throw new Error("github api error");
-}
-
-return response.json();
-
-})
-
-.then(function(repos){
-
-if(!Array.isArray(repos)||repos.length===0){
-
-container.innerHTML=
-'<div class="repo-error">'+
-'<i class="fas fa-folder-open"></i>'+
-"no public repositories found"+
-"</div>";
-
-return;
-
-}
-
-repos.sort(function(a,b){
-
-const first=
-new Date(
-a.pushed_at||
-a.updated_at||
-0
-);
-
-const second=
-new Date(
-b.pushed_at||
-b.updated_at||
-0
-);
-
-return second-first;
-
-});
-
-container.innerHTML=repos.map(function(repo){
-
-const description=repo.description
-?
-'<div class="repo-desc">'+
-escapeHTML(repo.description)+
-"</div>"
-:
-'<div class="repo-desc empty">no description</div>';
-
-const language=repo.language
-?
-"<span>"+
-'<span class="lang-dot"></span>'+
-escapeHTML(repo.language)+
-"</span>"
-:
-"";
-
-const stars=
-"<span>"+
-'<i class="fas fa-star"></i>'+
-(repo.stargazers_count||0)+
-"</span>";
-
-const forks=
-"<span>"+
-'<i class="fas fa-code-branch"></i>'+
-(repo.forks_count||0)+
-"</span>";
-
-const badge=repo.fork
-?
-'<span class="repo-badge">fork</span>'
-:
-"";
-
-const url=escapeHTML(
-safeURL(repo.html_url)
-);
-
-return (
-'<a class="repo-card" href="'+url+'" target="_blank" rel="noopener noreferrer">'+
-
-'<div class="repo-head">'+
-
-'<div class="repo-name">'+
-'<i class="fab fa-github"></i>'+
-escapeHTML(repo.name)+
-"</div>"+
-
-badge+
-
-"</div>"+
-
-description+
-
-'<div class="repo-meta">'+
-language+
-stars+
-forks+
-"</div>"+
-
-"</a>"
-);
-
-}).join("");
-
-})
-
-.catch(function(){
-
-container.innerHTML=
-'<div class="repo-error">'+
-'<i class="fas fa-exclamation-triangle"></i>'+
-"could not load repositories"+
-"</div>";
-
-reposLoaded=false;
-
-});
-
-}
-
-})();
-</script>
-
-</body>
-</html>.song-card{
-padding:.8rem
-}
-
-.song-art{
-width:80px;
-height:80px
-}
-
-.song-title{
-font-size:1rem
-}
-
-.tab-btn{
-font-size:.55rem;
-height:44px
-}
-}
-
-@media(max-width:450px){
-.banner-container{
-height:145px
-}
-
-.avatar{
-width:90px;
-height:90px
-}
-
-.avatar-wrapper{
-margin-top:-48px
-}
-
-h1{
-font-size:1.5rem
-}
-
-.song-card{
-flex-direction:column;
-align-items:stretch
-}
-
-.song-art{
-width:100%;
-height:180px
-}
-
-.section{
-margin-left:.8rem;
-margin-right:.8rem
-}
-}
-
-@media(prefers-reduced-motion:reduce){
-*{
-animation-duration:.01ms!important;
-animation-iteration-count:1!important;
-transition-duration:.01ms!important
-}
-}
-</style>
-</head>
-
-<body>
-
-<div id="loaderScreen">
-<div class="loader-orb">
-<div class="ring"></div>
-<div class="ring"></div>
-<div class="ring"></div>
-<i class="fab fa-discord"></i>
-</div>
-
-<div class="loader-text">
-<span>loading</span>
-<span class="dots">
-<span></span>
-<span></span>
-<span></span>
-</span>
-</div>
-
-<div class="loader-bar">
-<div class="loader-bar-fill" id="loaderFill"></div>
-</div>
-</div>
-
-<div id="startScreen" class="hidden">
-<div class="start-title">
-<i class="fas fa-terminal"></i>
-website made by swivel
-</div>
-
-<div class="click-continue">
-click to continue
-<i class="fas fa-arrow-right"></i>
-</div>
-</div>
-
-<div id="bioRoot">
-
-<div class="bio-card">
-
-<div class="tab-bar">
-<button class="tab-btn active" id="tab1" type="button" onclick="_4(1)">
-<i class="fab fa-discord"></i>
-bio
-</button>
-
-<button class="tab-btn" id="tab2" type="button" onclick="_4(2)">
-<i class="fab fa-github"></i>
-github
-</button>
-</div>
-
-<div class="tab-panel active" id="panel1">
-
-<div class="banner-container">
-<img
-id="banner"
-src="https://cdn.discordapp.com/banners/1402477112828629044/a_4034a6ad5c68c78605e07da734e36574.gif?size=1024"
-alt="profile banner"
-loading="eager"
-decoding="async">
-</div>
-
-<div class="avatar-wrapper">
-<div
-class="avatar"
-id="avatar"
-style="background-image:url('https://cdn.discordapp.com/avatars/1402477112828629044/516fc68757e9aec0ffd77ac016f484f1.png?size=512')">
-</div>
-</div>
-
-<div class="profile-header">
-
-<h1>
-<span id="displayName">swivel.lol</span>
-</h1>
-
-<div class="discord-tag">
-<i class="fab fa-discord"></i>
-@<span id="tag">swivel.lol</span>
-</div>
-
-<a
-class="friend-btn"
-href="https://discord.com/users/1402477112828629044"
-target="_blank"
-rel="noopener noreferrer">
-<i class="fab fa-discord"></i>
-send friend request
-</a>
-
-</div>
-
-<div class="section">
-
-<div class="section-title">
-<i class="fab fa-discord"></i>
-about
-</div>
-
-<div class="bio-text">
-
-<p>
-hi im william aka swivel i code in python c# js c++ rust n wtv else i keep to myself n do my own thing
-</p>
-
-<p>
-when im not coding im prolly on call meeting ppl or js wasting time dont expect me around 24/7 i got better shit to do
-</p>
-
-</div>
-
-</div>
-
-<div class="section">
-
-<div class="section-title">
-<i class="fas fa-music"></i>
-favorite song
-</div>
-
-<div class="song-card">
-
-<div class="song-art">
-<img
-src="https://files.catbox.moe/420hsm.jpeg"
-alt="star67 album art"
-loading="lazy">
-</div>
-
-<div class="song-info">
-
-<div class="song-label">
-<i class="fas fa-play-circle"></i>
-now spinning
-</div>
-
-<div class="song-title">
-star67
-</div>
-
-<div class="song-artist">
-deceased w/ NO ONE
-</div>
-
-<div class="audio-player">
-<audio id="mainAudio" controls preload="auto" loop>
-<source src="https://files.catbox.moe/90mjql.mp3" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="tab-panel" id="panel2">
-
-<div class="section">
-
-<div class="section-title">
-<i class="fab fa-github"></i>
-github repos
-</div>
-
-<div id="repos" class="repo-list">
-
-<div class="repo-loading">
-<i class="fas fa-spinner"></i>
-loading repositories…
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-(function(){
-
-const loaderScreen=document.getElementById("loaderScreen");
-const loaderFill=document.getElementById("loaderFill");
-const startScreen=document.getElementById("startScreen");
-const bioRoot=document.getElementById("bioRoot");
-const mainAudio=document.getElementById("mainAudio");
-
-let pct=0;
-
-const loadTimer=setInterval(function(){
-
-pct+=Math.random()*30+15;
-
-if(pct>=100){
-pct=100;
-clearInterval(loadTimer);
-}
-
-loaderFill.style.width=pct+"%";
-
-if(pct===100){
-
-setTimeout(function(){
-
-loaderScreen.classList.add("hidden");
-startScreen.classList.remove("hidden");
-
-},150);
-
-}
-
-},90);
-
-startScreen.addEventListener("click",function(){
-
-const playPromise=mainAudio.play();
-
-if(playPromise&&playPromise.catch){
-playPromise.catch(function(){});
-}
-
-startScreen.classList.add("hidden");
-
-setTimeout(function(){
-bioRoot.classList.add("revealed");
-},120);
-
-setTimeout(function(){
-startScreen.style.display="none";
-},600);
-
-});
-
-const API_URL="https://japi.rest/discord/v1/user/1402477112828629044";
-const REPOS_URL="https://api.github.com/users/sswivell/repos";
-
-let reposLoaded=false;
-
-function escapeHTML(value){
-
-return String(value)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#39;");
-
-}
-
-function safeURL(url){
-
-return /^https:\/\//i.test(url||"")
-?url
-:"#";
-
-}
-
-function updateDiscordProfile(data){
-
-const u=data&&data.data;
-
-if(!u)return;
-
-if(u.avatarURL){
-
-document.getElementById("avatar").style.backgroundImage=
-"url('"+u.avatarURL+"?size=512')";
-
-}
-
-if(u.bannerURL){
-
-const img=document.getElementById("banner");
-
-img.src=u.bannerURL+"?size=1024";
-img.alt="profile banner";
-
-}
-
-const displayName=u.global_name||u.username;
-
-if(displayName){
-document.getElementById("displayName").textContent=displayName;
-}
-
-if(u.tag){
-document.getElementById("tag").textContent=u.tag;
-}
-
-}
-
-const controller=new AbortController();
-
-const timeout=setTimeout(function(){
-controller.abort();
-},3500);
-
-fetch(API_URL,{
-signal:controller.signal
-})
-
-.then(function(response){
-
-if(response.ok){
-return response.json();
-}
-
-return Promise.reject(new Error("bad response"));
-
-})
-
-.then(function(data){
-
-clearTimeout(timeout);
-updateDiscordProfile(data);
-
-})
-
-.catch(function(){
-
-clearTimeout(timeout);
-
-});
-
-window._4=function(n){
-
-document.getElementById("tab1")
-.classList.toggle("active",n===1);
-
-document.getElementById("tab2")
-.classList.toggle("active",n===2);
-
-document.getElementById("panel1")
-.classList.toggle("active",n===1);
-
-document.getElementById("panel2")
-.classList.toggle("active",n===2);
-
-if(n===2&&!reposLoaded){
-
-reposLoaded=true;
-loadRepositories();
-
-}
-
-};
-
-function loadRepositories(){
-
-const wrap=document.getElementById("repos");
-
-fetch(REPOS_URL)
-
-.then(function(response){
-
-if(!response.ok){
-throw new Error("HTTP "+response.status);
-}
-
-return response.json();
-
-})
-
-.then(function(repos){
-
-if(!Array.isArray(repos)||repos.length===0){
-
-wrap.innerHTML=
-'<div class="repo-error">'+
-'<i class="fas fa-folder-open"></i>'+
-"no public repositories found"+
-"</div>";
-
-return;
-
-}
-
-const sorted=repos.slice().sort(function(a,b){
-
-const da=new Date(
-a.pushed_at||
-a.updated_at||
-0
-);
-
-const db=new Date(
-b.pushed_at||
-b.updated_at||
-0
-);
-
-return db-da;
-
-});
-
-wrap.innerHTML=sorted.map(function(repo){
-
-const description=repo.description
-?
-'<div class="repo-desc">'+
-escapeHTML(repo.description)+
-"</div>"
-:
-'<div class="repo-desc empty">no description</div>';
-
-const language=repo.language
-?
-"<span>"+
-'<span class="lang-dot"></span>'+
-escapeHTML(repo.language)+
-"</span>"
-:
-"";
-
-const stars=
-"<span>"+
-'<i class="fas fa-star"></i>'+
-(repo.stargazers_count||0)+
-"</span>";
-
-const forks=
-"<span>"+
-'<i class="fas fa-code-branch"></i>'+
-(repo.forks_count||0)+
-"</span>";
-
-const forkBadge=repo.fork
-?
-'<span class="repo-badge">fork</span>'
-:
-"";
-
-const href=escapeHTML(
-safeURL(repo.html_url)
-);
-
-return (
-'<a class="repo-card" href="'+href+'" target="_blank" rel="noopener noreferrer">'+
-'<div class="repo-head">'+
-'<div class="repo-name">'+
-'<i class="fab fa-github"></i>'+
-escapeHTML(repo.name)+
-"</div>"+
-forkBadge+
-"</div>"+
-description+
-'<div class="repo-meta">'+
-language+
-stars+
-forks+
-"</div>"+
-"</a>"
-);
-
-}).join("");
-
-})
-
-.catch(function(error){
-
-wrap.innerHTML=
-'<div class="repo-error">'+
-'<i class="fas fa-exclamation-triangle"></i>'+
-"could not load repos: "+
-escapeHTML(error.message)+
-"</div>";
-
-reposLoaded=false;
-
-});
-
-}
-
-})();
-</script>
-
-</body>
-</html>box-shadow:0 4px 12px -6px rgba(180,145,0,.25)
-}
-
-.repo-card:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 22px -10px rgba(180,145,0,.45);
-border-color:#f0cc3a
-}
-
-.repo-head{
-display:flex;
-align-items:center;
-gap:.6rem;
-margin-bottom:.4rem;
-flex-wrap:wrap
-}
-
-.repo-name{
-font-size:1.15rem;
-font-weight:700;
-color:#5c4a00;
-display:flex;
-align-items:center;
-gap:.5rem;
-overflow-wrap:anywhere
-}
-
-.repo-name i{
-color:#e6b800;
-font-size:1rem
-}
-
-.repo-badge{
-font-size:.68rem;
-font-weight:700;
-letter-spacing:.6px;
-text-transform:uppercase;
-padding:.15rem .6rem;
-border-radius:20px;
-background:#fff0a6;
-color:#b08b00;
-border:1px solid #ffe680
-}
-
-.repo-desc{
-font-size:.95rem;
-color:#9a8000;
-margin-bottom:.7rem;
-line-height:1.5;
-overflow-wrap:anywhere
-}
-
-.repo-desc.empty{
-font-style:italic;
-opacity:.7
-}
-
-.repo-meta{
-display:flex;
-flex-wrap:wrap;
-gap:1.2rem;
-font-size:.85rem;
-color:#9a8000;
-font-weight:500
-}
-
-.repo-meta span{
-display:inline-flex;
-align-items:center;
-gap:.35rem
-}
-
-.repo-meta i{
-color:#e6b800;
-font-size:.8rem
-}
-
-.lang-dot{
-width:10px;
-height:10px;
-border-radius:50%;
-display:inline-block;
-background:#ffd21f
-}
-
-.repo-loading,.repo-error{
-text-align:center;
-padding:2.5rem 1rem;
-color:#9a8000;
-font-size:.95rem
-}
-
-.repo-loading i{
-display:block;
-font-size:1.6rem;
-color:#e6b800;
-margin-bottom:.8rem;
-animation:spin 1.2s linear infinite
-}
-
-.repo-error{
-color:#b03a2e
-}
-
-.repo-error i{
-display:block;
-font-size:1.6rem;
-margin-bottom:.6rem
-}
-
-@media(max-width:650px){
-
-body{
-padding:max(.75rem,env(safe-area-inset-top)) max(.75rem,env(safe-area-inset-right)) max(.75rem,env(safe-area-inset-bottom)) max(.75rem,env(safe-area-inset-left))
-}
-
-.bio-card{
-border-radius:1.8rem
-}
-
-.banner-container{
-height:170px
-}
-
-.avatar{
-width:130px;
-height:130px
-}
-
-.avatar-wrapper{
-margin-top:-70px
-}
-
-h1{
-font-size:2rem
-}
-
-.section{
-margin:1.5rem 1.2rem 0
-}
-
-.song-card{
-padding:1rem;
-gap:1rem
-}
-
-.song-art{
-width:90px;
-height:90px
-}
-
-.song-title{
-font-size:1.1rem
-}
-
-.tab-btn{
-padding:.75rem .6rem;
-font-size:.92rem
-}
-
-.start-title{
-font-size:1.4rem
-}
-
-.click-continue{
-font-size:1.3rem
-}
-
-}
-
-@media(max-width:450px){
-
-.banner-container{
-height:150px
-}
-
-.avatar{
-width:110px;
-height:110px
-}
-
-.avatar-wrapper{
-margin-top:-60px
-}
-
-h1{
-font-size:1.8rem
-}
-
-.song-card{
-flex-direction:column;
-text-align:center
-}
-
-.song-info{
-align-items:center;
-width:100%
-}
-
-.song-label,.song-artist{
-justify-content:center
-}
-
-.tab-btn i{
-display:none
-}
-
-}
-
-@media(prefers-reduced-motion:reduce){
-
-*,*::before,*::after{
-animation-duration:.01ms!important;
-animation-iteration-count:1!important;
-scroll-behavior:auto!important;
-transition-duration:.01ms!important
-}
-
-}
-
-@supports not (height:100dvh){
-
-body{
-min-height:100vh
-}
-
-#loaderScreen,#startScreen{
-height:100vh
-}
-
-}
-</style>
-</head>
-
-<body>
-
-<div id="loaderScreen">
-
-<div class="loader-orb">
-<div class="ring"></div>
-<div class="ring"></div>
-<div class="ring"></div>
-<i class="fab fa-discord"></i>
-</div>
-
-<div class="loader-text">
-<span>loading</span>
-<span class="dots">
-<span></span>
-<span></span>
-<span></span>
-</span>
-</div>
-
-<div class="loader-bar">
-<div class="loader-bar-fill" id="loaderFill"></div>
-</div>
-
-</div>
-
-<div id="startScreen" class="hidden">
-
-<div class="start-title">
-<i class="fas fa-code"></i>
-Website made by swivel
-</div>
-
-<div class="click-continue">
-Click to continue
-<i class="fas fa-arrow-right"></i>
-</div>
-
-</div>
-
-<div id="bioRoot">
-
-<div class="bio-card">
-
-<div class="tab-bar">
-
-<button class="tab-btn active" id="tab1" type="button" onclick="_4(1)">
-<i class="fab fa-discord"></i>
-bio
-</button>
-
-<button class="tab-btn" id="tab2" type="button" onclick="_4(2)">
-<i class="fab fa-github"></i>
-github
-</button>
-
-</div>
-
-<div class="tab-panel active" id="panel1">
-
-<div class="banner-container">
-
-<img
-id="banner"
-src="https://cdn.discordapp.com/banners/1402477112828629044/a_4034a6ad5c68c78605e07da734e36574.gif?size=1024"
-alt="profile banner"
-loading="eager"
-decoding="async"
->
-
-</div>
-
-<div class="avatar-wrapper">
-
-<div
-class="avatar"
-id="avatar"
-style="background-image:url('https://cdn.discordapp.com/avatars/1402477112828629044/516fc68757e9aec0ffd77ac016f484f1.png?size=512')"
-></div>
-
-</div>
-
-<div class="profile-header">
-
-<h1>
-<span id="displayName">swivel.lol</span>
-</h1>
-
-<div class="discord-tag">
-
-<i class="fab fa-discord" style="margin-right:6px;color:#e6b800"></i>
-
-@<span id="tag">swivel.lol</span>
-
-</div>
-
-</div>
-
-<div class="section">
-
-<div class="section-title">
-<i class="fab fa-discord"></i>
-about
-</div>
-
-<div class="bio-text">
-
-<p>
-hi im william aka swivel i code in python c# js c++ rust n wtv else i keep to myself n do my own thing
-</p>
-
-<p>
-when im not coding im prolly on call meeting ppl or js wasting time dont expect me around 24/7 i got better shit to do
-</p>
-
-</div>
-
-</div>
-
-<div class="section" style="margin-bottom:.5rem">
-
-<div class="section-title">
-<i class="fas fa-music"></i>
-favorite song
-</div>
-
-<div class="song-card">
-
-<div class="song-art">
-
-<img
-src="https://files.catbox.moe/420hsm.jpeg"
-alt="star67 album art"
-loading="lazy"
->
-
-</div>
-
-<div class="song-info">
-
-<div class="song-label">
-<i class="fas fa-play-circle"></i>
-now spinning
-</div>
-
-<div class="song-title">
-star67
-</div>
-
-<div class="song-artist">
-
-<i class="fas fa-microphone-alt" style="font-size:.85rem"></i>
-
-deceased w/ NO ONE
-
-</div>
-
-<div class="audio-player">
-
-<audio id="mainAudio" controls preload="auto" loop>
-
-<source
-src="https://files.catbox.moe/90mjql.mp3"
-type="audio/mpeg"
->
-
-Your browser does not support the audio element.
-
-</audio>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="tab-panel" id="panel2">
-
-<div class="section" style="margin-bottom:.5rem">
-
-<div class="section-title">
-<i class="fab fa-github"></i>
-github repos
-</div>
-
-<div id="repos" class="repo-list">
-
-<div class="repo-loading" id="repoLoading">
-
-<i class="fas fa-spinner"></i>
-
-loading repositories…
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-(function(){
-
-const loaderScreen=document.getElementById('loaderScreen');
-const loaderFill=document.getElementById('loaderFill');
-const startScreen=document.getElementById('startScreen');
-const bioRoot=document.getElementById('bioRoot');
-const mainAudio=document.getElementById('mainAudio');
-
-let pct=0;
-
-const loadTimer=setInterval(function(){
-
-pct+=Math.random()*30+15;
-
-if(pct>=100){
-pct=100;
-clearInterval(loadTimer);
-}
-
-loaderFill.style.width=pct+'%';
-
-if(pct===100){
-
-setTimeout(function(){
-
-loaderScreen.classList.add('hidden');
-startScreen.classList.remove('hidden');
-
-},150);
-
-}
-
-},90);
-
-startScreen.addEventListener('click',function(){
-
-const playPromise=mainAudio.play();
-
-if(playPromise&&playPromise.catch){
-playPromise.catch(function(){});
-}
-
-startScreen.classList.add('hidden');
-
-setTimeout(function(){
-bioRoot.classList.add('revealed');
-},120);
-
-setTimeout(function(){
-startScreen.style.display='none';
-},600);
-
-});
-
-const API_URL='https://japi.rest/discord/v1/user/1402477112828629044';
-const REPOS_URL='https://api.github.com/users/sswivell/repos';
-
-let reposLoaded=false;
-
-function escapeHTML(value){
-
-return String(value)
-.replace(/&/g,'&amp;')
-.replace(/</g,'&lt;')
-.replace(/>/g,'&gt;')
-.replace(/"/g,'&quot;')
-.replace(/'/g,'&#39;');
-
-}
-
-function safeURL(url){
-
-return /^https:\/\//i.test(url||'')
-?url
-:'#';
-
-}
-
-function updateDiscordProfile(data){
-
-const u=data&&data.data;
-
-if(!u)return;
-
-if(u.avatarURL){
-
-document.getElementById('avatar').style.backgroundImage=
-"url('"+u.avatarURL+"?size=512')";
-
-}
-
-if(u.bannerURL){
-
-const img=document.getElementById('banner');
-
-img.src=u.bannerURL+'?size=1024';
-img.alt='profile banner';
-
-}
-
-const displayName=u.global_name||u.username;
-
-if(displayName){
-
-document.getElementById('displayName').textContent=displayName;
-
-}
-
-if(u.tag){
-
-document.getElementById('tag').textContent=u.tag;
-
-}
-
-}
-
-const controller=new AbortController();
-
-const timeout=setTimeout(function(){
-controller.abort();
-},3500);
-
-fetch(API_URL,{signal:controller.signal})
-
-.then(function(response){
-
-if(response.ok){
-return response.json();
-}
-
-return Promise.reject(new Error('bad response'));
-
-})
-
-.then(function(data){
-
-clearTimeout(timeout);
-updateDiscordProfile(data);
-
-})
-
-.catch(function(){
-
-clearTimeout(timeout);
-
-});
-
-window._4=function(n){
-
-document.getElementById('tab1')
-.classList.toggle('active',n===1);
-
-document.getElementById('tab2')
-.classList.toggle('active',n===2);
-
-document.getElementById('panel1')
-.classList.toggle('active',n===1);
-
-document.getElementById('panel2')
-.classList.toggle('active',n===2);
-
-if(n===2&&!reposLoaded){
-
-reposLoaded=true;
-loadRepositories();
-
-}
-
-};
-
-function loadRepositories(){
-
-const wrap=document.getElementById('repos');
-
-fetch(REPOS_URL)
-
-.then(function(response){
-
-if(!response.ok){
-
-throw new Error('HTTP '+response.status);
-
-}
-
-return response.json();
-
-})
-
-.then(function(repos){
-
-if(!Array.isArray(repos)||repos.length===0){
-
-wrap.innerHTML=
-'<div class="repo-error">'+
-'<i class="fas fa-folder-open"></i>'+
-'no public repositories found'+
-'</div>';
-
-return;
-
-}
-
-const sorted=repos.slice().sort(function(a,b){
-
-const da=new Date(
-a.pushed_at||
-a.updated_at||
-0
-);
-
-const db=new Date(
-b.pushed_at||
-b.updated_at||
-0
-);
-
-return db-da;
-
-});
-
-wrap.innerHTML=sorted.map(function(repo){
-
-const description=repo.description
-?'<div class="repo-desc">'+
-escapeHTML(repo.description)+
-'</div>'
-:'<div class="repo-desc empty">no description</div>';
-
-const language=repo.language
-?'<span>'+
-'<span class="lang-dot"></span>'+
-escapeHTML(repo.language)+
-'</span>'
-:'';
-
-const stars=
-'<span>'+
-'<i class="fas fa-star"></i>'+
-(repo.stargazers_count||0)+
-'</span>';
-
-const forks=
-'<span>'+
-'<i class="fas fa-code-branch"></i>'+
-(repo.forks_count||0)+
-'</span>';
-
-const forkBadge=repo.fork
-?'<span class="repo-badge">fork</span>'
-:'';
-
-const href=escapeHTML(
-safeURL(repo.html_url)
-);
-
-return '<a class="repo-card" href="'+href+'" target="_blank" rel="noopener noreferrer">'+
-'<div class="repo-head">'+
-;text-transform:uppercase;padding:.15rem .6rem;border-radius:20px;background:#dceeff;color:#2c7be5;border:1px solid #b8dfff}
-.repo-desc{font-size:.95rem;color:#5a8ab5;margin-bottom:.7rem;line-height:1.5;overflow-wrap:anywhere}
-.repo-desc.empty{font-style:italic;opacity:.7}
-.repo-meta{display:flex;flex-wrap:wrap;gap:1.2rem;font-size:.85rem;color:#5a8ab5;font-weight:500}
-.repo-meta span{display:inline-flex;align-items:center;gap:.35rem}
-.repo-meta i{color:#4a9eff;font-size:.8rem}
-.lang-dot{width:10px;height:10px;border-radius:50%;display:inline-block;background:#4a9eff}
-.repo-loading,.repo-error{text-align:center;padding:2.5rem 1rem;color:#5a8ab5;font-size:.95rem}
-.repo-loading i{display:block;font-size:1.6rem;color:#4a9eff;margin-bottom:.8rem;animation:spin 1.2s linear infinite}
-.repo-error{color:#c0392b}
-.repo-error i{display:block;font-size:1.6rem;margin-bottom:.6rem}
-@media(max-width:650px){body{padding:max(.75rem,env(safe-area-inset-top)) max(.75rem,env(safe-area-inset-right)) max(.75rem,env(safe-area-inset-bottom)) max(.75rem,env(safe-area-inset-left))}.bio-card{border-radius:1.8rem}.banner-container{height:170px}.avatar{width:130px;height:130px}.avatar-wrapper{margin-top:-70px}h1{font-size:2rem}.section{margin:1.5rem 1.2rem 0}.song-card{padding:1rem;gap:1rem}.song-art{width:90px;height:90px}.song-title{font-size:1.1rem}.tab-btn{padding:.75rem .6rem;font-size:.92rem}.start-title{font-size:1.4rem}.click-continue{font-size:1.3rem}}
-@media(max-width:450px){.banner-container{height:150px}.avatar{width:110px;height:110px}.avatar-wrapper{margin-top:-60px}h1{font-size:1.8rem}.song-card{flex-direction:column;text-align:center}.song-info{align-items:center;width:100%}.song-label,.song-artist{justify-content:center}.tab-btn i{display:none}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
-@supports not (height:100dvh){body{min-height:100vh}#loaderScreen,#startScreen{height:100vh}}
-</style>
-</head>
-
-<body>
-
-<div id="loaderScreen">
-  <div class="loader-orb">
-    <div class="ring"></div>
-    <div class="ring"></div>
-    <div class="ring"></div>
-    <i class="fab fa-discord"></i>
-  </div>
-  <div class="loader-text">
-    <span>loading</span>
-    <span class="dots"><span></span><span></span><span></span></span>
-  </div>
-  <div class="loader-bar"><div class="loader-bar-fill" id="loaderFill"></div></div>
-</div>
-
-<div id="startScreen" class="hidden">
-  <div class="start-title"><i class="fas fa-code"></i> Website made by swivel</div>
-  <div class="click-continue">Click to continue <i class="fas fa-arrow-right"></i></div>
-</div>
-
-<div id="bioRoot">
-<div class="bio-card">
-
-<div class="tab-bar">
-<button class="tab-btn active" id="tab1" type="button" onclick="_4(1)"><i class="fab fa-discord"></i> bio</button>
-<button class="tab-btn" id="tab2" type="button" onclick="_4(2)"><i class="fab fa-github"></i> github</button>
-</div>
-
-<div class="tab-panel active" id="panel1">
-
-<div class="banner-container">
-<img id="banner" src="https://cdn.discordapp.com/banners/1402477112828629044/a_4034a6ad5c68c78605e07da734e36574.gif?size=1024" alt="profile banner" loading="eager" decoding="async">
-</div>
-
-<div class="avatar-wrapper">
-<div class="avatar" id="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/1402477112828629044/516fc68757e9aec0ffd77ac016f484f1.png?size=512')"></div>
-</div>
-
-<div class="profile-header">
-<h1><span id="displayName">swivel.lol</span></h1>
-<div class="discord-tag"><i class="fab fa-discord" style="margin-right:6px;color:#4a9eff"></i> @<span id="tag">swivel.lol</span></div>
-</div>
-
-<div class="section">
-<div class="section-title"><i class="fab fa-discord"></i> about</div>
-<div class="bio-text">
-<p>hi. I'm William, aka swivel. I code in Python, C#, JavaScript, C++, Rust, and whatever else I feel like messing with. I keep to myself most of the time.</p>
-<p>When I'm not coding, I'm probably on a call, meeting people, or wasting time on TikTok. Don't expect me to be around 24/7. I have better shit to do.</p>
-</div>
-</div>
-
-<div class="section" style="margin-bottom:.5rem">
-<div class="section-title"><i class="fas fa-music"></i> favorite song</div>
-<div class="song-card">
-<div class="song-art"><img src="https://files.catbox.moe/420hsm.jpeg" alt="star67 album art" loading="lazy"></div>
-<div class="song-info">
-<div class="song-label"><i class="fas fa-play-circle"></i> now spinning</div>
-<div class="song-title">star67</div>
-<div class="song-artist"><i class="fas fa-microphone-alt" style="font-size:.85rem"></i> deceased w/ NO ONE</div>
-<div class="audio-player">
-<audio id="mainAudio" controls preload="auto" loop>
-<source src="https://files.catbox.moe/90mjql.mp3" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-
-<div class="tab-panel" id="panel2">
-<div class="section" style="margin-bottom:.5rem">
-<div class="section-title"><i class="fab fa-github"></i> github repos</div>
-<div id="repos" class="repo-list">
-<div class="repo-loading" id="repoLoading"><i class="fas fa-spinner"></i>loading repositories…</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<script>
-(function(){
-const loaderScreen = document.getElementById('loaderScreen');
-const loaderFill   = document.getElementById('loaderFill');
-const startScreen  = document.getElementById('startScreen');
-const bioRoot      = document.getElementById('bioRoot');
-const mainAudio    = document.getElementById('mainAudio');
-
-let pct = 0;
-const loadTimer = setInterval(function(){
-  pct += Math.random()*30 + 15;
-  if(pct >= 100){ pct = 100; clearInterval(loadTimer); }
-  loaderFill.style.width = pct + '%';
-  if(pct === 100){
-    setTimeout(function(){
-      loaderScreen.classList.add('hidden');
-      startScreen.classList.remove('hidden');
-    }, 150);
-  }
-}, 90);
-
-startScreen.addEventListener('click', function(){
-  const playPromise = mainAudio.play();
-  if(playPromise && playPromise.catch){
-    playPromise.catch(function(){});
-  }
-  startScreen.classList.add('hidden');
-  setTimeout(function(){ bioRoot.classList.add('revealed'); }, 120);
-  setTimeout(function(){ startScreen.style.display = 'none'; }, 600);
-});
-
-const API_URL='https://japi.rest/discord/v1/user/1402477112828629044';
-const REPOS_URL='https://api.github.com/users/sswivell/repos';
-let _6=false;
-
-function _7(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
-function _safeUrl(u){return /^https:\/\//i.test(u||'')?u:'#'}
-
-function _1(data){
-  const u = data && data.data;
-  if(!u) return;
-  if(u.avatarURL){document.getElementById('avatar').style.backgroundImage="url('"+u.avatarURL+"?size=512')"}
-  if(u.bannerURL){const img=document.getElementById('banner');img.src=u.bannerURL+"?size=1024";img.alt='profile banner'}
-  const dn=u.global_name||u.username;
-  if(dn) document.getElementById('displayName').textContent=dn;
-  if(u.tag) document.getElementById('tag').textContent=u.tag;
-}
-
-const _2=new AbortController();
-const _3=setTimeout(function(){_2.abort()},3500);
-fetch(API_URL,{signal:_2.signal})
-  .then(function(r){return r.ok?r.json():Promise.reject(new Error('bad response'))})
-  .then(function(data){clearTimeout(_3);_1(data)})
-  .catch(function(){clearTimeout(_3)});
-
-window._4=function(n){
-  document.getElementById('tab1').classList.toggle('active',n===1);
-  document.getElementById('tab2').classList.toggle('active',n===2);
-  document.getElementById('panel1').classList.toggle('active',n===1);
-  document.getElementById('panel2').classList.toggle('active',n===2);
-  if(n===2&&!_6){_6=true;_5()}
-};
-
-function _5(){
-  const wrap=document.getElementById('repos');
-  fetch(REPOS_URL)
-    .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})
-    .then(function(repos){
-      if(!Array.isArray(repos)||repos.length===0){
-        wrap.innerHTML='<div class="repo-error"><i class="fas fa-folder-open"></i>no public repositories found</div>';
-        return;
-      }
-      const sorted=repos.slice().sort(function(a,b){
-        const da=new Date(a.pushed_at||a.updated_at||0);
-        const db=new Date(b.pushed_at||b.updated_at||0);
-        return db-da;
-      });
-      wrap.innerHTML=sorted.map(function(repo){
-        const desc=repo.description?'<div class="repo-desc">'+_7(repo.description)+'</div>':'<div class="repo-desc empty">no description</div>';
-        const lang=repo.language?'<span><span class="lang-dot"></span>'+_7(repo.language)+'</span>':'';
-        const stars='<span><i class="fas fa-star"></i>'+(repo.stargazers_count||0)+'</span>';
-        const forks='<span><i class="fas fa-code-branch"></i>'+(repo.forks_count||0)+'</span>';
-        const forkBadge=repo.fork?'<span class="repo-badge">fork</span>':'';
-        const href=_7(_safeUrl(repo.html_url));
-        return '<a class="repo-card" href="'+href+'" target="_blank" rel="noopener noreferrer"><div class="repo-head"><div class="repo-name"><i class="fab fa-github"></i>'+_7(repo.name)+'</div>'+forkBadge+'</div>'+desc+'<div class="repo-meta">'+lang+stars+forks+'</div></a>';
-      }).join('');
-    })
-    .catch(function(err){
-      wrap.innerHTML='<div class="repo-error"><i class="fas fa-exclamation-triangle"></i>could not load repos: '+_7(err.message)+'</div>';
-      _6=false;
-    });
-}
-})();
-</script>
-</body>
-</html>ort the audio element.</audio></div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="tab-panel" id="panel2">
-<div class="section" style="margin-bottom:.5rem">
-<div class="section-title"><i class="fab fa-github"></i> github repos</div>
-<div id="repos" class="repo-list">
-<div class="repo-loading" id="repoLoading"><i class="fas fa-spinner"></i>loading repositories…</div>
-</div>
-</div>
-</div>
-</div>
-
-<script>
-(function(){
-const API_URL='https://japi.rest/discord/v1/user/1402477112828629044';
-const REPOS_URL='https://api.github.com/users/sswivell/repos';
-let _6=false;
-
-function _7(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
-function _safeUrl(u){return /^https:\/\//i.test(u||'')?u:'#'}
-
-function _1(data){
-  const u = data && data.data;
-  if(!u) return;
-  if(u.avatarURL){document.getElementById('avatar').style.backgroundImage=`url('${u.avatarURL}?size=512')`}
-  if(u.bannerURL){const img=document.getElementById('banner');img.src=`${u.bannerURL}?size=1024`;img.alt='profile banner'}
-  const dn=u.global_name||u.username;
-  if(dn) document.getElementById('displayName').textContent=dn;
-  if(u.tag) document.getElementById('tag').textContent=u.tag;
-}
-
-const _2=new AbortController();
-const _3=setTimeout(()=>_2.abort(),3500);
-fetch(API_URL,{signal:_2.signal})
-  .then(r=>r.ok?r.json():Promise.reject(new Error('bad response')))
-  .then(data=>{clearTimeout(_3);_1(data)})
-  .catch(()=>{clearTimeout(_3)});
-
-window._4=function(n){
-  document.getElementById('tab1').classList.toggle('active',n===1);
-  document.getElementById('tab2').classList.toggle('active',n===2);
-  document.getElementById('panel1').classList.toggle('active',n===1);
-  document.getElementById('panel2').classList.toggle('active',n===2);
-  if(n===2&&!_6){_6=true;_5()}
-};
-
-function _5(){
-  const wrap=document.getElementById('repos');
-  fetch(REPOS_URL)
-    .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})
-    .then(repos=>{
-      if(!Array.isArray(repos)||repos.length===0){
-        wrap.innerHTML='<div class="repo-error"><i class="fas fa-folder-open"></i>no public repositories found</div>';
-        return;
-      }
-      const sorted=repos.slice().sort((a,b)=>{
-        const da=new Date(a.pushed_at||a.updated_at||0);
-        const db=new Date(b.pushed_at||b.updated_at||0);
-        return db-da;
-      });
-      wrap.innerHTML=sorted.map(repo=>{
-        const desc=repo.description?`<div class="repo-desc">${_7(repo.description)}</div>`:`<div class="repo-desc empty">no description</div>`;
-        const lang=repo.language?`<span><span class="lang-dot"></span>${_7(repo.language)}</span>`:'';
-        const stars=`<span><i class="fas fa-star"></i>${repo.stargazers_count||0}</span>`;
-        const forks=`<span><i class="fas fa-code-branch"></i>${repo.forks_count||0}</span>`;
-        const forkBadge=repo.fork?'<span class="repo-badge">fork</span>':'';
-        const href=_7(_safeUrl(repo.html_url));
-        return `<a class="repo-card" href="${href}" target="_blank" rel="noopener noreferrer"><div class="repo-head"><div class="repo-name"><i class="fab fa-github"></i>${_7(repo.name)}</div>${forkBadge}</div>${desc}<div class="repo-meta">${lang}${stars}${forks}</div></a>`;
-      }).join('');
-    })
-    .catch(err=>{
-      wrap.innerHTML=`<div class="repo-error"><i class="fas fa-exclamation-triangle"></i>could not load repos: ${_7(err.message)}</div>`;
-      _6=false;
-    });
-}
-})();
-</script>
-</body>
-</html>
+  document.getElementById("tab1")
